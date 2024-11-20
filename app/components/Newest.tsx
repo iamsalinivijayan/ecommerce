@@ -1,19 +1,16 @@
 import Link from "next/link";
 import { simplifiedProduct } from "../interface";
-import { client } from "../lib/sanity";
+import { sanityFetch } from "../lib/sanity";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { NEWEST_PRODUCTS_QUERY } from "../lib/queries";
+import category from "@/sanity/schemaTypes/category";
 
 async function getData() {
-  const query = `*[_type == "product"][0...9] | order(_createdAt asc){
-  _id,
-    price,
-    name,
-    "slug": slug.current,
-    "categoryName": category->name,
-    "imageUrl": images[0].asset->url
-}`;
-  const data = await client.fetch(query);
+  const data = await sanityFetch({
+    query: NEWEST_PRODUCTS_QUERY, // Pass the query constant
+    params: { category },           // Pass the dynamic parameter
+  });
 
   return data;
 }

@@ -1,19 +1,14 @@
 import Link from "next/link";
 import { simplifiedProduct } from "../interface";
-import { client } from "../lib/sanity";
+import {sanityFetch } from "../lib/sanity";
 import Image from "next/image";
+import { CATEGORY_PRODUCTS_QUERY } from "../lib/queries";
 
-async function getData(cateogry: string) {
-  const query = `*[_type == "product" && category->name == "${cateogry}"] {
-        _id,
-          "imageUrl": images[0].asset->url,
-          price,
-          name,
-          "slug": slug.current,
-          "categoryName": category->name
-      }`;
-
-  const data = await client.fetch(query);
+async function getData(category: string) {
+  const data = await sanityFetch({
+    query: CATEGORY_PRODUCTS_QUERY, // Pass the query constant
+    params: { category },           // Pass the dynamic parameter
+  });
 
   return data;
 }
@@ -61,7 +56,7 @@ export default async function CategoryPage({
                   </p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
-                  ${product.price}
+                ₹{product.price}
                 </p>
               </div>
             </div>

@@ -2,27 +2,19 @@ import AddToBag from "@/app/components/AddToBag";
 import CheckoutNow from "@/app/components/CheckOutNow";
 import ImageGallery from "@/app/components/ImageGallery";
 import { fullProduct } from "@/app/interface";
-import { client } from "@/app/lib/sanity";
+import { SLUG_QUERY } from "@/app/lib/queries";
+import { sanityFetch } from "@/app/lib/sanity";
 import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 
 async function getData(slug: string) {
-  const query = `*[_type == "product" && slug.current == "${slug}"][0] {
-        _id,
-          images,
-          price,
-          name,
-          description,
-          "slug": slug.current,
-          "categoryName": category->name,
-          price_id
-      }`;
-
-  const data = await client.fetch(query);
+  const data = await sanityFetch({
+    query: SLUG_QUERY, // Pass the query constant
+    params: { slug },           // Pass the dynamic parameter
+  });
 
   return data;
 }
-
 
 export default async function ProductPge({
   params,
@@ -56,10 +48,10 @@ export default async function ProductPge({
             <div className="mb-4">
               <div className="flex items-end gap-2">
                 <span className="text-xl font-bold text-gray-800 md:text-2xl">
-                  ${data.price}
+                ₹{data.price}
                 </span>
                 <span className="mb-0.5 text-red-500 line-through">
-                  ${data.price + 30}
+                ₹{data.price + 30}
                 </span>
               </div>
 

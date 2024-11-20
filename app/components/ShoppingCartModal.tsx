@@ -16,6 +16,7 @@ export default function ShoppingCartModal() {
     cartCount,
     shouldDisplayCart,
     handleCartClick,
+    setItemQuantity,
     cartDetails,
     removeItem,
     totalPrice,
@@ -33,6 +34,12 @@ export default function ShoppingCartModal() {
       console.log(error);
     }
   }
+
+  const handleQuantityChange = (id: string, newQuantity: number) => {
+    if (newQuantity <= 0) return;
+    setItemQuantity(id, newQuantity);
+  };
+
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
       <SheetContent className="sm:max-w-lg w-[90vw]">
@@ -62,7 +69,7 @@ export default function ShoppingCartModal() {
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>{entry.name}</h3>
-                            <p className="ml-4">${entry.price}</p>
+                            <p className="ml-4">₹{entry.price}</p>
                           </div>
                           <p className="mt-1 text-sm text-gray-500 line-clamp-2">
                             {entry.description}
@@ -70,7 +77,27 @@ export default function ShoppingCartModal() {
                         </div>
 
                         <div className="flex flex-1 items-end justify-between text-sm">
-                          <p className="text-gray-500">QTY: {entry.quantity}</p>
+                        <div className="flex items-center">
+                            <button
+                              onClick={() =>
+                                handleQuantityChange(entry.id, entry.quantity - 1)
+                              }
+                              className="px-2 py-1 border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-l-md"
+                            >
+                              -
+                            </button>
+                            <span className="px-4 py-1 border-t border-b border-gray-300">
+                              {entry.quantity}
+                            </span>
+                            <button
+                              onClick={() =>
+                                handleQuantityChange(entry.id, entry.quantity + 1)
+                              }
+                              className="px-2 py-1 border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-r-md"
+                            >
+                              +
+                            </button>
+                          </div>
 
                           <div className="flex">
                             <button
@@ -93,7 +120,7 @@ export default function ShoppingCartModal() {
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
             <div className="flex justify-between text-base font-medium text-gray-900">
               <p>Subtotal:</p>
-              <p>${totalPrice}</p>
+              <p>₹{totalPrice}</p>
             </div>
             <p className="mt-0.5 text-sm text-gray-500">
               Shipping and taxes are calculated at checkout.
