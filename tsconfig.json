@@ -14,7 +14,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["app/*"]
-    }
+    },
+    "allowSyntheticDefaultImports": true, // Add this flag
+    "esModuleInterop": true // Add this flag
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
