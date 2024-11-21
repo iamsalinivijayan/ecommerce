@@ -10,7 +10,11 @@
     "moduleDetection": "force",
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".", // Set the root directory of your project
+    "paths": {
+      "@/sanity/*": ["sanity/*"] // Map the alias to your sanity folder
+    }
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
