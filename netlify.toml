@@ -1,6 +1,6 @@
 [build]
-  command = "pnpm install && pnpm run build"
-  publish = ".next"
+command = "pnpm install && pnpm run build"
+publish = ".next"
 
-  # Add custom environment variables if needed
-  environment = { NODE_ENV = "production" }
+[[plugins]]
+package = "@netlify/plugin-nextjs"
