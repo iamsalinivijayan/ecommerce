@@ -61,13 +61,13 @@ importers:
         specifier: ^3.64.2
         version: 3.64.2(react@18.3.1)
       '@types/node':
-        specifier: ^20
+        specifier: ^20.16.15
         version: 20.16.15
       '@types/react':
-        specifier: ^18
+        specifier: ^18.3.12
         version: 18.3.12
       '@types/react-dom':
-        specifier: ^18
+        specifier: ^18.3.1
         version: 18.3.1
       '@types/stripe':
         specifier: ^8.0.417

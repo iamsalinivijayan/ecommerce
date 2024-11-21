@@ -6,16 +6,14 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "preserve",
-    "moduleResolution": "node", 
+    "module": "esnext",
+    "moduleResolution": "node",
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",  // Root folder
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["app/*"], // Map alias @ to your app folder
-      "@/components/*": ["app/components/*"], // Map alias @/components to your components folder
-      "@/sanity/*": ["sanity/*"]  // If you're using sanity folder, ensure this is mapped too
+      "@/*": ["app/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],
