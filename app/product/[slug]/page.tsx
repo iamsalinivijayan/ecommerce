@@ -1,10 +1,10 @@
-import AddToBag from "@/app/components/AddToBag";
-import CheckoutNow from "@/app/components/CheckOutNow";
-import ImageGallery from "@/app/components/ImageGallery";
-import { fullProduct } from "@/app/interface";
-import { SLUG_QUERY } from "@/app/lib/queries";
-import { sanityFetch } from "@/app/lib/sanity";
-import { Button } from "@/components/ui/button";
+import AddToBag from "../../components/AddToBag";
+import CheckoutNow from "../../components/CheckOutNow";
+import ImageGallery from "../../components/ImageGallery";
+import { fullProduct } from "../../interface";
+import { SLUG_QUERY } from "../../lib/queries";
+import { sanityFetch } from "../../lib/sanity";
+import { Button } from "../../../components/ui/button";
 import { Star, Truck } from "lucide-react";
 
 async function getData(slug: string) {
