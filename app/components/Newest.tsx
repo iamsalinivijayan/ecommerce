@@ -4,7 +4,7 @@ import { sanityFetch } from "../lib/sanity";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { NEWEST_PRODUCTS_QUERY } from "../lib/queries";
-import category from "../../sanity/schemas/category";
+import category from "@/sanity/schemas/category";
 
 async function getData() {
   const data = await sanityFetch({
