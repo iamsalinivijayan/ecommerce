@@ -4,12 +4,12 @@ import { sanityFetch } from "../lib/sanity";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { NEWEST_PRODUCTS_QUERY } from "../lib/queries";
-import category from "../../sanity/schemaTypes/category";
+import category from "../../sanity/schemas/category";
 
 async function getData() {
   const data = await sanityFetch({
     query: NEWEST_PRODUCTS_QUERY, // Pass the query constant
-    params: { category },           // Pass the dynamic parameter
+    params: { category }, // Pass the dynamic parameter
   });
 
   return data;
@@ -58,7 +58,7 @@ export default async function Newest() {
                   </p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
-                ₹{product.price}
+                  ₹{product.price}
                 </p>
               </div>
             </div>
