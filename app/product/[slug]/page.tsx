@@ -10,18 +10,19 @@ import { Star, Truck } from "lucide-react";
 async function getData(slug: string) {
   const data = await sanityFetch({
     query: SLUG_QUERY, // Pass the query constant
-    params: { slug },           // Pass the dynamic parameter
+    params: { slug },  // Pass the dynamic parameter
   });
 
   return data;
 }
 
-export default async function ProductPge({
+export default async function ProductPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>; // Adjusted to match the PageProps type
 }) {
-  const data: fullProduct = await getData(params.slug);
+  const resolvedParams = await params; // Resolve the promise
+  const data: fullProduct = await getData(resolvedParams.slug);
 
   return (
     <div className="bg-white">
@@ -48,10 +49,10 @@ export default async function ProductPge({
             <div className="mb-4">
               <div className="flex items-end gap-2">
                 <span className="text-xl font-bold text-gray-800 md:text-2xl">
-                ₹{data.price}
+                  ₹{data.price}
                 </span>
                 <span className="mb-0.5 text-red-500 line-through">
-                ₹{data.price + 30}
+                  ₹{data.price + 30}
                 </span>
               </div>
 

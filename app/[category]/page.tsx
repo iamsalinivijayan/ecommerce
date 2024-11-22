@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { simplifiedProduct } from "../interface";
-import {sanityFetch } from "../lib/sanity";
+import { sanityFetch } from "../lib/sanity";
 import Image from "next/image";
 import { CATEGORY_PRODUCTS_QUERY } from "../lib/queries";
 
@@ -18,16 +18,17 @@ export const dynamic = "force-dynamic";
 export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>; // Adjusted to align with PageProps
 }) {
-  const data: simplifiedProduct[] = await getData(params.category);
+  const resolvedParams = await params; // Resolve the promise
+  const data: simplifiedProduct[] = await getData(resolvedParams.category);
 
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 sm:px-6  lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Our Products for {params.category}
+            Our Products for {resolvedParams.category}
           </h2>
         </div>
 
