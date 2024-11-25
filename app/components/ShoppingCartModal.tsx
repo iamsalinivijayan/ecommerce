@@ -77,10 +77,13 @@ export default function ShoppingCartModal() {
                         </div>
 
                         <div className="flex flex-1 items-end justify-between text-sm">
-                        <div className="flex items-center">
+                          <div className="flex items-center">
                             <button
                               onClick={() =>
-                                handleQuantityChange(entry.id, entry.quantity - 1)
+                                handleQuantityChange(
+                                  entry.id,
+                                  entry.quantity - 1
+                                )
                               }
                               className="px-2 py-1 border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-l-md"
                             >
@@ -91,7 +94,10 @@ export default function ShoppingCartModal() {
                             </span>
                             <button
                               onClick={() =>
-                                handleQuantityChange(entry.id, entry.quantity + 1)
+                                handleQuantityChange(
+                                  entry.id,
+                                  entry.quantity + 1
+                                )
                               }
                               className="px-2 py-1 border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-r-md"
                             >

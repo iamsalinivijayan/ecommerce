@@ -4,8 +4,8 @@ import Newest from "./components/Newest";
 export default function Home() {
   return (
     <div>
-      <Hero/>
-      <Newest/>
+      <Hero />
+      <Newest />
     </div>
   );
 }

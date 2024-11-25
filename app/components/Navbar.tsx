@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingBag } from "lucide-react";
 import { useShoppingCart } from "use-shopping-cart";
+import { ClerkLoaded, SignInButton, UserButton, useUser } from "@clerk/nextjs";
 
 const links = [
   { name: "Home", href: "/" },
@@ -14,11 +15,20 @@ const links = [
 ];
 
 export default function Navbar() {
+  const { user } = useUser();
   const pathname = usePathname();
   const { handleCartClick, cartCount } = useShoppingCart();
 
-   // Ensure cartCount is always a number
-   const itemCount = cartCount ?? 0;
+  // Ensure cartCount is always a number
+  const itemCount = cartCount ?? 0;
+
+  const handleCart = () => {
+    if (user) {
+      handleCartClick();
+    } else {
+      alert("Please sign in to view your cart.");
+    }
+  };
 
   return (
     <header className="mb-8 border-b">
@@ -51,23 +61,27 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="flex divide-x border-r sm:border-l">
-          <Button
-            variant={"outline"}
-            onClick={() => handleCartClick()}
-            className="relative flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
-          >
-            {itemCount  > 0 && (
-              <span className="absolute bottom-1 inset-x-auto flex items-center justify-center h-5 w-5 text-xs font-bold text-white bg-primary rounded-full sm:h-6 sm:w-6">
-                {cartCount}
-              </span>
+        <ClerkLoaded>
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="outline"
+              onClick={handleCart}
+              className="relative flex h-12 w-12 items-center justify-center rounded-full border"
+            >
+              {user && itemCount > 0 && (
+                <span className="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-white sm:h-6 sm:w-6">
+                  {cartCount}
+                </span>
+              )}
+              <ShoppingBag className="h-6 w-6" />
+            </Button>
+            {user ? (
+              <UserButton />
+            ) : (
+              <SignInButton mode="modal" />
             )}
-            <ShoppingBag />
-            <span className="hidden text-xs font-semibold text-gray-500 sm:block">
-              Cart
-            </span>
-          </Button>
-        </div>
+          </div>
+        </ClerkLoaded>
       </div>
     </header>
   );
