@@ -5,7 +5,7 @@ export const client = createClient({
     projectId: 'zl2eg24w',
     dataset: 'ecommerce',
     apiVersion: '2022-03-25',
-    useCdn: true, //set to false if statically generating pages, using ISR or tag based revalidation
+    useCdn: false, //set to false if statically generating pages, using ISR or tag based revalidation
 })
 
 export async function sanityFetch({
