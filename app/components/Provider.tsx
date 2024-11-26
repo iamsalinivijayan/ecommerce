@@ -13,7 +13,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       cancelUrl="http://localhost:3000/stripe/error"
       currency="USD"
       billingAddressCollection={false}
-      shouldPersist={true}
+      shouldPersist={false}
       language="en-US"
     >
       {children}
