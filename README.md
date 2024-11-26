@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# eCommerce Project - Next.js, TypeScript, Sanity, Tailwind CSS, Stripe
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This is an eCommerce platform built using **Next.js** with **TypeScript** for static site generation and server-side rendering. The project uses **Sanity** as the CMS for managing products and content, **Tailwind CSS** for styling, and **Stripe** for handling payments.
 
-```bash
+---
+
+## Features
+
+- **Product Management**: Add, update, and remove products using Sanity CMS.
+- **Responsive Design**: Fully responsive design using Tailwind CSS.
+- **Shopping Cart**: Add items to the cart and manage quantities.
+- **Stripe Integration**: Secure payment gateway integration for processing payments.
+- **Order History**: Users can view their order history (stored in local storage or backend).
+- **Authentication**: User authentication using Clerk (optional).
+
+---
+
+## Technologies Used
+
+- **Next.js** - A React-based framework for building static and server-rendered applications.
+- **TypeScript** - A superset of JavaScript that adds static types.
+- **Sanity** - A headless CMS for managing and delivering content.
+- **Tailwind CSS** - A utility-first CSS framework for rapid UI development.
+- **Stripe** - Payment processing service for securely handling transactions.
+- **Clerk** (optional) - User authentication and management service.
+- **use-shopping-cart** - A custom hook for managing shopping cart state.
+
+---
+
+## Prerequisites
+
+Before getting started, ensure you have the following installed:
+
+- **Node.js** (v14 or later)
+- **npm** (v7 or later) or **Yarn**
+- **Stripe Account** (for payment processing)
+- **Sanity Studio** (for managing product data)
+
+---
+
+To set up the project
+1.Install the dependencies 
+
+pnpm install
+# or
+yarn install
+
+2. Add environment variables
+
+3. Run the development server
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Then deploy on a platform of your choice
