@@ -1,4 +1,4 @@
-# eCommerce Project - Next.js, TypeScript, Sanity, Tailwind CSS, Stripe
+# eCommerce project - CuratedCart
 
 ## Overview
 
