@@ -12,7 +12,6 @@ This is an eCommerce platform built using **Next.js** with **TypeScript** for st
 - **Responsive Design**: Fully responsive design using Tailwind CSS.
 - **Shopping Cart**: Add items to the cart and manage quantities.
 - **Stripe Integration**: Secure payment gateway integration for processing payments.
-- **Order History**: Users can view their order history (stored in local storage or backend).
 - **Authentication**: User authentication using Clerk (optional).
 
 ---
@@ -44,7 +43,7 @@ To set up the project
 1.Install the dependencies 
 
 pnpm install
-# or
+or
 yarn install
 
 2. Add environment variables
@@ -52,7 +51,7 @@ yarn install
 3. Run the development server
 
 npm run dev
-# or
+or
 yarn dev
 
 4. Then deploy on a platform of your choice
